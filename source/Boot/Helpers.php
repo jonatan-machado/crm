@@ -177,7 +177,7 @@ function theme(string $path = null):string
 /**
  * @param string $url
  */
-function redirect(string $url): void
+function redirect(string $url):void
 {
     header("HTTP/1.1 302 Redirect");
     if (filter_var($url, FILTER_VALIDATE_URL)) {
