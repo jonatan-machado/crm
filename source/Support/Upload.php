@@ -9,7 +9,7 @@ use CoffeeCode\Uploader\Media;
 /**
  * FSPHP | Class Upload
  *
- * @author Jonatan Machado <contato@thinkworld.com.br>
+ * @author Robson V. Leite <cursos@upinside.com.br>
  * @package Source\Support
  */
 class Upload
@@ -48,7 +48,7 @@ class Upload
             return null;
         }
 
-        return $upload->upload($image, $name, $width, CONF_IMAGE_QUALITY);
+        return str_replace(CONF_UPLOAD_DIR . "/", "", $upload->upload($image, $name, $width, CONF_IMAGE_QUALITY));
     }
 
     /**
@@ -65,7 +65,7 @@ class Upload
             return null;
         }
 
-        return $upload->upload($file, $name);
+        return str_replace(CONF_UPLOAD_DIR . "/", "", $upload->upload($file, $name));
     }
 
     /**
@@ -82,7 +82,7 @@ class Upload
             return null;
         }
 
-        return $upload->upload($media, $name);
+        return str_replace(CONF_UPLOAD_DIR . "/", "", $upload->upload($media, $name));
     }
 
     /**

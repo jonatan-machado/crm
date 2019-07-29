@@ -5,7 +5,7 @@ namespace Source\Core;
 use League\Plates\Engine;
 
 /**
- * FSPHP | Class View
+ * think | Class Connect [ Singleton Pattern ]
  *
  * @author Jonatan Machado <contato@thinkworld.com.br>
  * @package Source\Core

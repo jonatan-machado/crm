@@ -3,7 +3,7 @@
 namespace Source\Core;
 
 /**
- * Thinkworld | Class Connect [ Singleton Pattern ]
+ * think | Class Connect [ Singleton Pattern ]
  *
  * @author Jonatan Machado <contato@thinkworld.com.br>
  * @package Source\Core

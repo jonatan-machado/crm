@@ -5,7 +5,7 @@ namespace Source\Core;
 use Source\Support\Message;
 
 /**
- * FSPHP | Class Session
+ * think | Class Connect [ Singleton Pattern ]
  *
  * @author Jonatan Machado <contato@thinkworld.com.br>
  * @package Source\Core

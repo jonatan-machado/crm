@@ -21,11 +21,11 @@ function is_email(string $email): bool
  */
 function is_passwd(string $password): bool
 {
-    if (password_get_info($password)['algo']) {
+    if (password_get_info($password)['algo'] || (mb_strlen($password) >= CONF_PASSWD_MIN_LEN && mb_strlen($password) <= CONF_PASSWD_MAX_LEN)) {
         return true;
     }
 
-    return (mb_strlen($password) >= CONF_PASSWD_MIN_LEN && mb_strlen($password) <= CONF_PASSWD_MAX_LEN ? true : false);
+    return false;
 }
 
 /**
@@ -85,6 +85,17 @@ function str_title(string $string): string
 }
 
 /**
+ * @param string $text
+ * @return string
+ */
+function str_textarea(string $text): string
+{
+    $text = filter_var($text, FILTER_SANITIZE_STRIPPED);
+    $arrayReplace = ["&#10;", "&#10;&#10;", "&#10;&#10;&#10;", "&#10;&#10;&#10;&#10;", "&#10;&#10;&#10;&#10;&#10;"];
+    return "<p>" . str_replace($arrayReplace, "</p><p>", $text) . "</p>";
+}
+
+/**
  * @param string $string
  * @param int $limit
  * @param string $pointer
@@ -122,6 +133,29 @@ function str_limit_chars(string $string, int $limit, string $pointer = "..."): s
 }
 
 /**
+ * @param string $price
+ * @return string
+ */
+function str_price(?string $price): string
+{
+    return number_format((!empty($price) ? $price : 0), 2, ",", ".");
+}
+
+/**
+ * @param string|null $search
+ * @return string
+ */
+function str_search(?string $search): string
+{
+    if (!$search) {
+        return "all";
+    }
+
+    $search = preg_replace("/[^a-z0-9A-Z\@\ ]/", "", $search);
+    return (!empty($search) ? $search : "all");
+}
+
+/**
  * ###############
  * ###   URL   ###
  * ###############
@@ -133,15 +167,15 @@ function str_limit_chars(string $string, int $limit, string $pointer = "..."): s
  */
 function url(string $path = null): string
 {
-    if(strpos($_SERVER['HTTP_HOST'],"localhost")){
-      if($path){
-          return CONF_URL_TEST."/".($path[0] == "/" ? mb_substr($path, 1) : $path);
-      }
-      return CONF_URL_TEST;
+    if (strpos($_SERVER['HTTP_HOST'], "localhost")) {
+        if ($path) {
+            return CONF_URL_TEST . "/" . ($path[0] == "/" ? mb_substr($path, 1) : $path);
+        }
+        return CONF_URL_TEST;
     }
 
-    if($path){
-        return CONF_URL_BASE."/".($path[0] == "/" ? mb_substr($path,1):$path);
+    if ($path) {
+        return CONF_URL_BASE . "/" . ($path[0] == "/" ? mb_substr($path, 1) : $path);
     }
 
     return CONF_URL_BASE;
@@ -150,34 +184,15 @@ function url(string $path = null): string
 /**
  * @return string
  */
-function url_back():string
+function url_back(): string
 {
-    return($_SERVER['HTTP_REFERER']?? url());
+    return ($_SERVER['HTTP_REFERER'] ?? url());
 }
 
-/**
- * @param string|null $path
- * @return string
- */
-function theme(string $path = null):string
-{
-    if(strpos($_SERVER['HTTP_HOST'],"localhost")){
-        if($path){
-            return CONF_URL_TEST."/themes/".CONF_VIEW_THEME."/".($path[0] == "/" ? mb_substr($path, 1) : $path);
-        }
-        return CONF_URL_TEST."/themes/".CONF_VIEW_THEME;
-    }
-
-    if($path){
-        return CONF_URL_BASE."/themes/".CONF_VIEW_THEME."/".($path[0] == "/" ? mb_substr($path, 1) : $path);
-    }
-
-    return CONF_URL_BASE."/themes/".CONF_VIEW_THEME;
-}
 /**
  * @param string $url
  */
-function redirect(string $url):void
+function redirect(string $url): void
 {
     header("HTTP/1.1 302 Redirect");
     if (filter_var($url, FILTER_VALIDATE_URL)) {
@@ -185,11 +200,70 @@ function redirect(string $url):void
         exit;
     }
 
-    if(filter_input(INPUT_GET, "route",FILTER_DEFAULT) != $url){
+    if (filter_input(INPUT_GET, "route", FILTER_DEFAULT) != $url) {
         $location = url($url);
         header("Location: {$location}");
         exit;
     }
+}
+
+/**
+ * ##################
+ * ###   ASSETS   ###
+ * ##################
+ */
+
+/**
+ * @return \Source\Models\User|null
+ */
+function user(): ?\Source\Models\User
+{
+    return \Source\Models\Auth::user();
+}
+
+/**
+ * @return \Source\Core\Session
+ */
+function session(): \Source\Core\Session
+{
+    return new \Source\Core\Session();
+}
+
+/**
+ * @param string|null $path
+ * @param string $theme
+ * @return string
+ */
+function theme(string $path = null, string $theme = CONF_VIEW_THEME): string
+{
+    if (strpos($_SERVER['HTTP_HOST'], "localhost")) {
+        if ($path) {
+            return CONF_URL_TEST . "/themes/{$theme}/" . ($path[0] == "/" ? mb_substr($path, 1) : $path);
+        }
+
+        return CONF_URL_TEST . "/themes/{$theme}";
+    }
+
+    if ($path) {
+        return CONF_URL_BASE . "/themes/{$theme}/" . ($path[0] == "/" ? mb_substr($path, 1) : $path);
+    }
+
+    return CONF_URL_BASE . "/themes/{$theme}";
+}
+
+/**
+ * @param string $image
+ * @param int $width
+ * @param int|null $height
+ * @return string
+ */
+function image(?string $image, int $width, int $height = null): ?string
+{
+    if ($image) {
+        return url() . "/" . (new \Source\Support\Thumb())->make($image, $width, $height);
+    }
+
+    return null;
 }
 
 /**
@@ -202,28 +276,52 @@ function redirect(string $url):void
  * @param string $date
  * @param string $format
  * @return string
+ * @throws Exception
  */
-function date_fmt(string $date = "now", string $format = "d/m/Y H\hi"): string
+function date_fmt(?string $date, string $format = "d/m/Y H\hi"): string
 {
+    $date = (empty($date) ? "now" : $date);
     return (new DateTime($date))->format($format);
 }
 
 /**
  * @param string $date
  * @return string
+ * @throws Exception
  */
-function date_fmt_br(string $date = "now"): string
+function date_fmt_br(?string $date): string
 {
+    $date = (empty($date) ? "now" : $date);
     return (new DateTime($date))->format(CONF_DATE_BR);
 }
 
 /**
  * @param string $date
  * @return string
+ * @throws Exception
  */
-function date_fmt_app(string $date = "now"): string
+function date_fmt_app(?string $date): string
 {
+    $date = (empty($date) ? "now" : $date);
     return (new DateTime($date))->format(CONF_DATE_APP);
+}
+
+/**
+ * @param string|null $date
+ * @return string|null
+ */
+function date_fmt_back(?string $date): ?string
+{
+    if (!$date) {
+        return null;
+    }
+
+    if (strpos($date, " ")) {
+        $date = explode(" ", $date);
+        return implode("-", array_reverse(explode("/", $date[0]))) . " " . $date[1];
+    }
+
+    return implode("-", array_reverse(explode("/", $date)));
 }
 
 /**
@@ -238,6 +336,10 @@ function date_fmt_app(string $date = "now"): string
  */
 function passwd(string $password): string
 {
+    if (!empty(password_get_info($password)['algo'])) {
+        return $password;
+    }
+
     return password_hash($password, CONF_PASSWD_ALGO, CONF_PASSWD_OPTION);
 }
 
@@ -261,9 +363,9 @@ function passwd_rehash(string $hash): bool
 }
 
 /**
- * ################
- * ###   CSRF   ###
- * ################
+ * ###################
+ * ###   REQUEST   ###
+ * ###################
  */
 
 /**
@@ -287,4 +389,61 @@ function csrf_verify($request): bool
         return false;
     }
     return true;
+}
+
+/**
+ * @return null|string
+ */
+function flash(): ?string
+{
+    $session = new \Source\Core\Session();
+    if ($flash = $session->flash()) {
+        return $flash;
+    }
+    return null;
+}
+
+/**
+ * @param string $key
+ * @param int $limit
+ * @param int $seconds
+ * @return bool
+ */
+function request_limit(string $key, int $limit = 5, int $seconds = 60): bool
+{
+    $session = new \Source\Core\Session();
+    if ($session->has($key) && $session->$key->time >= time() && $session->$key->requests < $limit) {
+        $session->set($key, [
+            "time" => time() + $seconds,
+            "requests" => $session->$key->requests + 1
+        ]);
+        return false;
+    }
+
+    if ($session->has($key) && $session->$key->time >= time() && $session->$key->requests >= $limit) {
+        return true;
+    }
+
+    $session->set($key, [
+        "time" => time() + $seconds,
+        "requests" => 1
+    ]);
+
+    return false;
+}
+
+/**
+ * @param string $field
+ * @param string $value
+ * @return bool
+ */
+function request_repeat(string $field, string $value): bool
+{
+    $session = new \Source\Core\Session();
+    if ($session->has($field) && $session->$field == $value) {
+        return true;
+    }
+
+    $session->set($field, $value);
+    return false;
 }
