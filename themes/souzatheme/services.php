@@ -14,14 +14,14 @@
                         </div>
                     </div>
                     <div class="serv-cont-right">
-                        <img src="<?= theme("/assets/images/servi02.png"); ?>" >
+                        <img src="<?= theme("/assets/images/servi02.jpg"); ?>" >
                     </div>
                 </div>
             </div>
             <div class="serv-left ">
                 <div class="serv-content d-flex justify-content-between">
                     <div class="serv-cont-right">
-                        <img src="<?= theme("/assets/images/servi02.png"); ?>" >
+                        <img src="<?= theme("/assets/images/servi02.jpg"); ?>" >
                     </div>
                     <div class="serv-cont-left col-md-8">
                         <div class="serv-tittle-left" style="text-align: right;">
@@ -39,7 +39,7 @@
             <div class="serv-left ">
                 <div class="serv-content d-flex justify-content-between">
                     <div class="serv-cont-right">
-                        <img src="<?= theme("/assets/images/servi01.png"); ?>" >
+                        <img src="<?= theme("/assets/images/servi01.jpg"); ?>" >
                     </div>
                     <div class="serv-cont-left col-md-8">
                         <div class="serv-tittle-right" style="text-align: right;">
@@ -63,7 +63,7 @@
                         </div>
                     </div>
                     <div class="serv-cont-right">
-                        <img src="<?= theme("/assets/images/servi01.png"); ?>" >
+                        <img src="<?= theme("/assets/images/servi01.jpg"); ?>" >
                     </div>
                 </div>
             </div>

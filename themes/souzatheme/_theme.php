@@ -28,7 +28,7 @@
             </ul>
             <ul class="nav-home col-2">
                 <a href="<?= url("/agendar"); ?>"> <li>Agendar</li></a>
-                <a href="<?= url("/blog"); ?>"> <li>Contato</li></a>
+                <a href="<?= url("/blog"); ?>"> <li>Blog</li></a>
             </ul>
             <ul class="nav-home2 col-1" >
                 <a href=""><li><img src="<?= theme("/assets/images/insta.png"); ?>" height="30"></li></a>

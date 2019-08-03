@@ -51,7 +51,7 @@
         </div>        
         <div class="about-right col-md-5 d-flex justify-content-end flex-column">
             <div class="about-me d-flex justify-space-between">
-                <img src="<?= theme("/assets/images/fulana.png"); ?>" >
+                <img src="<?= theme("/assets/images/fulana.jpg"); ?>" >
                 <div>
                     <div class="about-me-name">Fulana</div>
                     <ul class="about-me-list">
@@ -63,7 +63,7 @@
                 </div>
             </div>
             <div class="about-me d-flex justify-space-between">
-                    <img src="<?= theme("/assets/images/fulana.png"); ?>" >
+                    <img src="<?= theme("/assets/images/fulana.jpg"); ?>" >
                     <div>
                         <div class="about-me-name">Fulana</div>
                         <ul class="about-me-list">

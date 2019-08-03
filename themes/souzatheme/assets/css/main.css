@@ -70,8 +70,7 @@ body{
 }
 .nav-home a li:after{
     
-    content: '';
-    
+    content: '';    
     margin-bottom:3px;
     display: block;
     width: 0;
@@ -305,6 +304,8 @@ body{
 .about-me img{
     width: 100px;
     height: 100px;
+    border-radius: 50px;
+    
 }
 .about-me-name{
     font-size: 25px;
@@ -316,8 +317,7 @@ body{
     font-size:15px;
     margin-top: 10px;
 }
-.about-me-list li{
-   
+.about-me-list li{   
     margin-bottom: 15px;
 }
 .serv-content{
@@ -347,17 +347,17 @@ body{
     color: #FFF;
     margin: 0;
     padding: 0;
-    padding: 5px  5px;
-   
+    padding: 5px  5px;   
 }
 .serv-cont-left{
-    padding: 0;
-   
+    padding: 0;   
 }
-
 .serv-cont-right img{
-    width: 195px;
+    width: 175px;
     height: 100px;
+    border-radius: 27px;
+    border: 2px solid #fff;
+
 }
 .serv-cont-right{
     display: flex;
@@ -383,16 +383,11 @@ body{
     border-radius: 16px;
     display: flex;
     justify-content: center;
-    align-items: center
-
-
+    align-items: center;
 }
 .big-box-inside{
-    width: 95%;
-    
-    height: 95%;
-
-    
+    width: 95%;    
+    height: 95%;    
 }
 .agendar-tittle{
     text-align: center;
@@ -400,5 +395,152 @@ body{
     font-weight: bold;
     font-size: 25px;
 }
+.form-right,.form-left{
+    color: #E8E0E0;
+    font-weight: bold;
+}
+.form-left input,.form-right input{
+    width: 260px;
+    height: 30px;
+    background-color: rgba(8,38,74,0.31);
+    border:0;
+    border-radius:10px;
+    color: #ccc;
+    padding-left: 6px;
+}
+.form-right select{
+    width: 120px;
+    background-color: rgba(8,38,74,0.31);
+    border:0;
+    border-radius:10px;
+    color: #ccc;
+    height: 30px;
+    padding-left: 6px;
+}
+.form-right select option{
+     background-color: rgba(8,38,74,0.31);
+     border:0;
+     border-radius:10px;
+     color: #000;
+     padding-left: 6px;
+}
+input[type="submit"]{
+    margin-top: 10px;
+    font-weight: bold;
+    height: 30px;
+    width: 180px;
+    border-radius: 5px;
+    background-color: #2ECC71;
+    color:#FFF;
+    border:0;
+}
+.box-hour{
+    width: 500px;
+    height: 300px;
+    background: rgba(8,38,74,0.60);
+    border-radius: 55px;
+    position: absolute;
+    left: 50%;
+    margin-left: -250px;
+    margin-top: -120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.box-hour-content{
+    width: 85%;
+    height:88%;
+    
+}
+.box-hour-tittle{
+    color: #fff;
+    font-weight: bold;
+    font-size: 20px;
 
+}
+.box-hour-text{
+    font-size: 13px;
+    color:#00F811;
+    margin-bottom: 15px;
+}
 
+.image-blog{
+    width: 15%;
+    height: 260px;
+   
+    padding: 0;
+
+}
+.image-blog img{
+    width: 100%;
+    height: 160px;
+    border-radius: 18px 0 0 18px;
+    border: 2px  solid #2ECC71;
+}
+.date-blog{
+    text-align: right;
+    color: #fff;
+    font-weight: bold;
+     margin-top: 70px;
+}
+.blog-post{
+    height: 320px;
+    padding: 0;
+}
+.blog-content{
+    height: 260px;
+    width: 100%;
+    background-color: #08264A;
+    border-radius: 90px 10px 90px 10px;
+    margin-top: 25px;
+}
+.blog-space{
+   
+    height: 95%;
+    color:#fff;
+}
+.blog-box{
+   width:90%;
+   height: 100%;
+}
+.post-tittle{
+    height: 28px;
+    text-align: center;
+    max-width: 400px;
+    margin: auto;
+    margin-top: 5px;
+    color:#2ECC71;
+    font-size: 15px;
+}
+.post-content{
+    margin: auto;
+    width: 95%;
+    max-width: 95%;
+    height: 160px;
+    margin-top: 5px;
+    font-size: 14px;
+    overflow: hidden;
+}
+.option-blog{
+     width: 95%;
+     margin: auto;
+}
+.btn-blog{
+    width: 150px;
+    height: 38px;
+    border-radius: 18px;
+    background-color: rgba(151,161,172,0.15);
+    text-decoration: none;
+    color:#2ECC71;
+    line-height: 38px;
+    text-align: center;
+    font-size: 13px;
+    font-weight: bold;
+     margin-left: 25px;
+}
+.btn-blog:hover{  
+    color:#2ECC71;
+    text-decoration: none;
+
+   
+}
