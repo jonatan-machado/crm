@@ -10,7 +10,7 @@ define("CONF_DB_NAME", "think");
 /**
  * PROJECT URLs
  */
-define("CONF_URL_BASE", "http://localhost/think");
+define("CONF_URL_BASE", "http://localhost/substitute/crm");//
 define("CONF_URL_TEST", "http://localhost/think");
 
 /**
@@ -61,7 +61,7 @@ define("CONF_PASSWD_OPTION", ["cost" => 10]);
  */
 define("CONF_VIEW_PATH", __DIR__ . "/../../shared/views");
 define("CONF_VIEW_EXT", "php");
-define("CONF_VIEW_THEME", "cafeweb");
+define("CONF_VIEW_THEME", "souzatheme");
 define("CONF_VIEW_APP", "cafeapp");
 define("CONF_VIEW_ADMIN", "cafeadm");
 

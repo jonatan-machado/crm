@@ -21,6 +21,18 @@ $route->group(null);
 $route->get("/", "Web:home");
 $route->get("/sobre", "Web:about");
 
+
+/*
+SOUZA THEME
+*/
+$route->group(null);
+$route->get("/", "Souza:home");
+$route->get("/sobre", "Souza:about");
+$route->get("/servicos", "Souza:services");
+$route->get("/agendar", "Souza:booking");
+$route->get("/blog", "Souza:blog");
+
+
 //blog
 $route->group("/blog");
 $route->get("/", "Web:blog");
