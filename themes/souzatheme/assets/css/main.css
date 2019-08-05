@@ -768,6 +768,9 @@ input[type="submit"]{
     .post-content{
         font-size: 13px;
     }
+    .serv-left{
+        height: 220px;
+    }
 
 
 }
@@ -861,7 +864,9 @@ input[type="submit"]{
     .post-content{
        font-size: 12px;
     }
-
+    .serv-cont-right{
+        margin-top: -23px;
+    }
 
 
 }
@@ -997,6 +1002,9 @@ input[type="submit"]{
     }
     .serv-content-right{
         font-size: 12px;
+    }
+    .serv-cont-right{
+        margin-top: -25px;
     }
     .form-left input,.form-right input{
         width: 110px;
