@@ -106,3 +106,14 @@ $(function () {
         });
     });
 });
+
+
+$(function(){
+    $('.ui-hamburger-03').bind('click', function(){
+        $('div.menu-float').toggle(700);
+    
+       
+
+    });
+});
+

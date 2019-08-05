@@ -2,7 +2,7 @@
 
 <section class="container-fluid">
     <div class="my-cont-content d-flex">
-        <div class="col-md-6"style="">
+        <div class="col-md-6 extra-class">
             <div class="serv-left ">
                 <div class="serv-content d-flex justify-content-between">
                     <div class="serv-cont-left col-md-8">

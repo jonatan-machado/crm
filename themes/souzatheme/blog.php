@@ -8,14 +8,14 @@
 		<div class="blog-content">
 			<div class="blog-space d-flex  justify-content-center ">
 				<div class="blog-box">
-					<div class="post-tittle">
+					<header class="post-tittle">
 						Accelerate Your -  Doctor-Patient Communication
-					</div>
-					<div class="post-content">
+					</header>
+					<article class="post-content">
 						Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry y dummy text of the printing and typesetting industryy dummy text of the printing and typesetting 
 						is simply dummy text of the printing and typesetting industry. Lorem Ipsum is ...
 
-					</div>
+					</article>
 					<div class="option-blog d-flex">
 						<a class="btn-blog" href="">LER MAIS...</a>
 						<a class="btn-blog" href="">Compartilhar</a>

@@ -1,7 +1,7 @@
 <?php $v->layout("_theme"); ?>
 <section class="container-fluid">
     <div class="my-cont-content d-flex">
-    	<div class="col-sm-6">
+    	<div class="changing col-sm-6">
             <div class="about-left " >
                 <header class="about-content-tittle">
                     Sobre a clinica Dental
@@ -13,7 +13,7 @@
                     Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem 
                 </article>
             </div>
-            <div class="about-left">
+            <div class="about-left2">
                 <div class="about-box d-flex justify-content-center align-items-center">
                     <div class="box-content">
                         <header class="box-tittle">
@@ -58,8 +58,7 @@
                         <li>Graduada em odontologia  pela UFRJ em 2006</li>
                         <li>Pós-graduado em Neurociência pelo UFRJ </li>                            
                         <li>alessadra@odontologia.com.br</li>
-                    </ul>
-                    
+                    </ul>                    
                 </div>
             </div>
             <div class="about-me d-flex justify-space-between">
@@ -74,8 +73,7 @@
                         
                     </div>
             </div>
-        </div>
-    
+        </div>    
     </div>
 </section>		
 
