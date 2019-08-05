@@ -10,8 +10,8 @@ define("CONF_DB_NAME", "think");
 /**
  * PROJECT URLs
  */
-define("CONF_URL_BASE", "http://localhost/think");
-define("CONF_URL_TEST", "http://localhost/think");
+define("CONF_URL_BASE", "http://localhost/crm");
+define("CONF_URL_TEST", "http://localhost/crm");
 
 /**
  * SITE
