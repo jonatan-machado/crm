@@ -48,6 +48,7 @@ class Scheduling extends Admin
 
 
             $scheduleCreate->author = $data["author"];
+            /*
             $postCreate->category = $data["category"];
             $postCreate->title = $data["title"];
             $postCreate->uri = str_slug($postCreate->title);
@@ -55,7 +56,7 @@ class Scheduling extends Admin
             $postCreate->content = str_replace(["{title}"], [$postCreate->title], $content);
             $postCreate->video = $data["video"];
             $postCreate->status = $data["status"];
-            $postCreate->post_at = date_fmt_back($data["post_at"]);
+            $postCreate->post_at = date_fmt_back($data["post_at"]);*/
       
 
             if (!$scheduleCreate->save()) {
