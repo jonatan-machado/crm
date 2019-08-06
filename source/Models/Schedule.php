@@ -15,7 +15,7 @@ class Schedule extends Model
      */
     public function __construct()
     {
-        parent::__construct("scheduling", ["id"], ["id_client", "data_query", "status", "id_type_services", "id_users"]);
+        parent::__construct("scheduling", ["id"], ["id_client", "content", "id_type_services","id_user","schedule_at"]);
     }
     
     /**
@@ -23,12 +23,12 @@ class Schedule extends Model
      */
     public function save(): bool
     {
-        $checkUri = (new Post())->find("uri = :uri AND id != :id", "uri={$this->uri}&id={$this->id}");
+        $checkScheduleAt = (new Schedule())->find("schedule_at = :schedule_at AND id != :id", "schedule_at={$this->schedule_at}&id={$this->id}");
 
-        if ($checkUri->count()) {
-            $this->uri = "{$this->uri}-{$this->lastId()}";
+        if (!$checkScheduleAt->count()) {
+            return parent::save();
         }
-        return parent::save();
+        return false;        
     }
 
 }

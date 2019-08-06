@@ -61,7 +61,7 @@ define("CONF_PASSWD_OPTION", ["cost" => 10]);
  */
 define("CONF_VIEW_PATH", __DIR__ . "/../../shared/views");
 define("CONF_VIEW_EXT", "php");
-define("CONF_VIEW_THEME", "souzatheme");
+define("CONF_VIEW_THEME", "cafeweb");
 define("CONF_VIEW_APP", "cafeapp");
 define("CONF_VIEW_ADMIN", "cafeadm");
 

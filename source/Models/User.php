@@ -57,6 +57,13 @@ class User extends Model
     /**
      * @return string
      */
+    public function id(): int
+    {
+        return $this->id;
+    }
+    /**
+     * @return string
+     */
     public function fullName(): string
     {
         return "{$this->first_name} {$this->last_name}";
