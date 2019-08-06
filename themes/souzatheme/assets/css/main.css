@@ -941,8 +941,7 @@ input[type="submit"]{
      .about-me{
         width: 100%;
         font-size: 13px;
-        flex-direction: column;
-        float: left;
+        flex-direction: column;        
 
     }
     .about-me-name{
