@@ -45,7 +45,6 @@
             };
 
             echo $nav("home", "dash", "Dashboard");
-            echo $nav("bookmark", "scheduling/home", "Agendamento");
             echo $nav("coffee", "control/home", "Control");
             echo $nav("pencil-square-o", "blog/home", "Blog");
             echo $nav("comments-o", "faq/home", "FAQs");

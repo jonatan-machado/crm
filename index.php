@@ -21,6 +21,18 @@ $route->group(null);
 $route->get("/", "Web:home");
 $route->get("/sobre", "Web:about");
 
+
+/*
+SOUZA THEME
+*/
+$route->group(null);
+$route->get("/", "Souza:home");
+$route->get("/sobre", "Souza:about");
+$route->get("/servicos", "Souza:services");
+$route->get("/agendar", "Souza:booking");
+$route->get("/blog", "Souza:blog");
+
+
 //blog
 $route->group("/blog");
 $route->get("/", "Web:blog");
@@ -107,9 +119,6 @@ $route->get("/control/plan", "Control:plan");
 $route->post("/control/plan", "Control:plan");
 $route->get("/control/plan/{plan_id}", "Control:plan");
 $route->post("/control/plan/{plan_id}", "Control:plan");
-
-//Agendamentp 
-$route->get("/scheduling/home", "Scheduling:home");
 
 //blog
 $route->get("/blog/home", "Blog:home");
