@@ -1016,8 +1016,11 @@ input[type="submit"]{
     .serv-cont-right{
         margin-top: -25px;
     }
+    .form-left,.form-right{
+        width: 50%;
+    }
     .form-left input,.form-right input{
-        width: 110px;
+        width: 95%;
         font-size: 12px;
     }
     .big-box{
@@ -1034,6 +1037,9 @@ input[type="submit"]{
     form{
         font-size:12px;
     }
+    .form-right select{
+        width: 95%;
+    }
 
     .date-blog,.post-content,.btn-blog{
         font-size: 10px;
@@ -1041,18 +1047,20 @@ input[type="submit"]{
     .post-content{
         height: 150px;
         margin-top: 15px;
+        font-size: 9px;
     }
     .post-tittle{
         font-size: 10px;
-        width: 130px;
-        height: 40px;
+        width: 95px;
+        height: 43px;
     }
     .btn-blog{
-        width: 110px;
-        height: 30px;
-        margin-left: 5px;
+        width: 70px;
+        height: 20px;
+        margin-left: 2px;
         text-align: center;
-        line-height: 30px;
+        line-height: 20px;
+        font-size:8px;
         
     }
     .option-blog{
@@ -1068,8 +1076,9 @@ input[type="submit"]{
         width: 100%;
        height: 500px;
        margin-left: -0.6px;
-
-
+    }
+    .blog-content{
+        width: 95%;
     }
 
 }
