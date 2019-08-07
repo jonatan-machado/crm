@@ -111,6 +111,15 @@ $route->get("/scheduling/home", "Scheduling:home");
 //$route->post("/scheduling/home", "Scheduling:home");
 $route->get("/scheduling/post", "Scheduling:post");
 $route->post("/scheduling/post", "Scheduling:post");
+
+$route->get("/scheduling/type", "Scheduling:type");
+$route->post("/scheduling/type", "Scheduling:type");
+$route->get("/scheduling/types", "Scheduling:types");
+
+$route->get("/scheduling/time-schedule", "Scheduling:time_schedule");
+$route->post("/scheduling/time-schedule", "Scheduling:time_schedule");
+$route->get("/scheduling/time-schedules", "Scheduling:time_schedules");
+
 //control
 $route->get("/control/home", "Control:home");
 $route->get("/control/subscriptions", "Control:subscriptions");

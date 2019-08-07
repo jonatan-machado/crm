@@ -42,8 +42,12 @@
 
                      <label class="label">
                         <span class="legend">Data de Agendamento:</span>
-                        <input class="mask-datetime" type="text" name="schedule" value="<?= date("d/m/Y H:i"); ?>"
-                               required/>
+                        <select name="schedule" required>
+                            <option selected disabled> Selecione...</option>
+                            <?php foreach ($times as $time): ?>
+                            <option value="<?= $time->id; ?>"><?= $time->allowed_time_at; ?></option>
+                            <?php endforeach; ?>
+                        </select>
                     </label>
                 </div>
 

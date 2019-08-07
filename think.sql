@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 06-Ago-2019 às 15:30
+-- Tempo de geração: 07-Ago-2019 às 03:23
 -- Versão do servidor: 10.3.16-MariaDB
 -- versão do PHP: 7.3.7
 
@@ -90,6 +90,28 @@ INSERT INTO `address` (`id`, `user_id`, `street`, `number`, `complement`, `creat
 (47, 47, 'dona ermelinda pereira', '413', 'casa 1', '2018-09-03 19:40:57', '2018-09-16 22:41:04'),
 (48, 48, 'rua projetada 02', '742', 'casa 1', '2018-09-03 19:40:57', '2018-09-16 22:41:05'),
 (50, 50, 'rua dos gerã¢nios', '110', 'casa 1', '2018-09-03 19:40:57', '2018-09-16 22:41:09');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `allowed_time`
+--
+
+CREATE TABLE `allowed_time` (
+  `id` int(11) NOT NULL,
+  `allowed_time_at` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp(),
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `updated_at` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `allowed_time`
+--
+
+INSERT INTO `allowed_time` (`id`, `allowed_time_at`, `created_at`, `updated_at`) VALUES
+(1, '2019-08-07 05:55:00', '2019-08-07 00:55:19', NULL),
+(2, '2019-08-08 15:55:00', '2019-08-07 00:55:36', NULL),
+(3, '2019-08-07 06:11:00', '2019-08-07 01:11:58', NULL);
 
 -- --------------------------------------------------------
 
@@ -640,7 +662,7 @@ INSERT INTO `report_access` (`id`, `users`, `views`, `pages`, `created_at`, `upd
 (2, 1, 1, 32, '2019-02-14 15:37:35', '2019-02-14 15:39:23'),
 (3, 1, 1, 12, '2019-08-02 23:53:45', '2019-08-03 00:43:58'),
 (4, 2, 1, 91, '2019-08-05 20:17:56', '2019-08-06 02:17:50'),
-(5, 1, 3, 35, '2019-08-06 03:09:14', '2019-08-06 13:26:48');
+(5, 1, 4, 45, '2019-08-06 03:09:14', '2019-08-07 01:12:12');
 
 -- --------------------------------------------------------
 
@@ -659,6 +681,13 @@ CREATE TABLE `report_online` (
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Extraindo dados da tabela `report_online`
+--
+
+INSERT INTO `report_online` (`id`, `user`, `ip`, `url`, `agent`, `pages`, `created_at`, `updated_at`) VALUES
+(17, 52, '::1', '/ops/404', 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.142 Safari/537.36', 2, '2019-08-07 01:08:57', '2019-08-07 01:12:12');
+
 -- --------------------------------------------------------
 
 --
@@ -672,7 +701,7 @@ CREATE TABLE `scheduling` (
   `status` varchar(20) NOT NULL DEFAULT 'scheduled' COMMENT 'scheduled, canceled',
   `id_type_services` int(11) NOT NULL,
   `id_user` int(11) DEFAULT NULL,
-  `schedule_at` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp(),
+  `id_schedule_at` int(11) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -681,8 +710,10 @@ CREATE TABLE `scheduling` (
 -- Extraindo dados da tabela `scheduling`
 --
 
-INSERT INTO `scheduling` (`id`, `id_client`, `content`, `status`, `id_type_services`, `id_user`, `schedule_at`, `created_at`, `updated_at`) VALUES
-(1, 53, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'scheduled', 1, 52, '2019-08-06 18:24:00', '2019-08-06 13:26:47', NULL);
+INSERT INTO `scheduling` (`id`, `id_client`, `content`, `status`, `id_type_services`, `id_user`, `id_schedule_at`, `created_at`, `updated_at`) VALUES
+(1, 53, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'scheduled', 1, 52, 2, '2019-08-06 13:26:47', '2019-08-07 01:05:36'),
+(2, 1, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'scheduled', 2, 52, 1, '2019-08-07 01:08:31', NULL),
+(3, 1, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'scheduled', 1, 52, 3, '2019-08-07 01:12:11', NULL);
 
 -- --------------------------------------------------------
 
@@ -703,7 +734,9 @@ CREATE TABLE `type_services` (
 --
 
 INSERT INTO `type_services` (`id`, `name`, `uri`, `created_at`, `updated_at`) VALUES
-(1, 'Limpeza Dentária', 'limpeza-dentaria', '2019-08-06 12:33:28', NULL);
+(1, 'Limpeza Dentária', 'limpeza-dentaria', '2019-08-06 12:33:28', '2019-08-06 22:50:58'),
+(2, 'Manutenção Dentária', 'manutencao-dentaria', '2019-08-07 00:11:10', '2019-08-07 00:25:45'),
+(3, 'Cirurgião Dentista', 'cirurgiao-dentista', '2019-08-07 00:13:35', '2019-08-07 00:25:55');
 
 -- --------------------------------------------------------
 
@@ -794,6 +827,12 @@ INSERT INTO `users` (`id`, `first_name`, `last_name`, `email`, `password`, `leve
 ALTER TABLE `address`
   ADD PRIMARY KEY (`id`),
   ADD KEY `addr_user` (`user_id`);
+
+--
+-- Índices para tabela `allowed_time`
+--
+ALTER TABLE `allowed_time`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Índices para tabela `app_categories`
@@ -933,6 +972,12 @@ ALTER TABLE `address`
   MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
+-- AUTO_INCREMENT de tabela `allowed_time`
+--
+ALTER TABLE `allowed_time`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT de tabela `app_categories`
 --
 ALTER TABLE `app_categories`
@@ -1020,19 +1065,19 @@ ALTER TABLE `report_access`
 -- AUTO_INCREMENT de tabela `report_online`
 --
 ALTER TABLE `report_online`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT de tabela `scheduling`
 --
 ALTER TABLE `scheduling`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de tabela `type_services`
 --
 ALTER TABLE `type_services`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de tabela `users`

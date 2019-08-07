@@ -15,7 +15,7 @@ class Schedule extends Model
      */
     public function __construct()
     {
-        parent::__construct("scheduling", ["id"], ["id_client", "content", "id_type_services","id_user","schedule_at"]);
+        parent::__construct("scheduling", ["id"], ["id_client", "content", "id_type_services","id_user","id_schedule_at"]);
     }
     
     /**
@@ -23,7 +23,7 @@ class Schedule extends Model
      */
     public function save(): bool
     {
-        $checkScheduleAt = (new Schedule())->find("schedule_at = :schedule_at AND id != :id", "schedule_at={$this->schedule_at}&id={$this->id}");
+        $checkScheduleAt = (new Schedule())->find("id_schedule_at = :id_schedule_at AND id != :id", "id_schedule_at={$this->id_schedule_at}&id={$this->id}");
 
         if (!$checkScheduleAt->count()) {
             return parent::save();

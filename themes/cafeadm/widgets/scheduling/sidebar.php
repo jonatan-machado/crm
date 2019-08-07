@@ -11,6 +11,8 @@
         };
 
         echo $nav("pencil-square-o", "scheduling/home", "Agendamento");
+        echo $nav("star-o", "scheduling/types", "Tipos de Serviço");
+        echo $nav("clock-o", "scheduling/time-schedules", "Horários para Agendamento");
         echo $nav("plus-circle", "scheduling/post", "Novo Agendamento");
         ?>
     </nav>
