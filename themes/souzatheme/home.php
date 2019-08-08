@@ -15,7 +15,7 @@
 			</div>
 		</div>
 		<div class="home-content-right align-self-end justify-content-center col-md-6 d-flex">
-			<img src="<?= theme("/assets/images/snake.png"); ?>" height="400">
+			<img src="<?= theme("/assets/images/snake.svg"); ?>" height="400">
 		</div>
 	</div>
 </section>	

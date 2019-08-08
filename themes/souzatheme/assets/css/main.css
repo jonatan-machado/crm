@@ -285,7 +285,8 @@ body{
     width: 95%;
     margin: auto;
     color: #fff;
-    height: 60px;;
+    height: 60px;
+    max-width: 1600px;
     
 
 }
@@ -295,6 +296,7 @@ body{
     color: #fff;
     padding: 0;
     margin-top: 20px;
+    max-width: 1600px;
 }
 
 .logo{
@@ -484,6 +486,7 @@ body{
 }
 .serv-right{
     margin-top: 19%;
+    padding: 0;
 }
 .serv-tittle-right{
     font-size: 27px;
@@ -837,6 +840,7 @@ input[type="submit"]{
     .extra-class{
         margin:auto;
         min-width: 100%;
+        padding: 0;
     }
     .serv-right{
        margin: auto;

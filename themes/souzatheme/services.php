@@ -35,7 +35,7 @@
                 </div>
             </div>
         </div> 
-        <div class="serv-right col-md-6" style="padding: 0">                
+        <div class="serv-right col-md-6" >                
             <div class="serv-left ">
                 <div class="serv-content d-flex justify-content-between">
                     <div class="serv-cont-right">
